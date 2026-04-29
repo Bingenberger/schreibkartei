@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useRef } from 'react'
+import { useEffect, useCallback } from 'react'
 import type { Card } from '../types'
 import { FlipCard } from './FlipCard'
 import './CardViewer.css'
@@ -11,7 +11,6 @@ interface Props {
 }
 
 export function CardViewer({ cards, currentIndex, onNavigate, onClose }: Props) {
-  const thumbnailRef = useRef<HTMLDivElement>(null)
   const card = cards[currentIndex]
   const total = cards.length
 
@@ -33,16 +32,6 @@ export function CardViewer({ cards, currentIndex, onNavigate, onClose }: Props) 
     window.addEventListener('keydown', handler)
     return () => window.removeEventListener('keydown', handler)
   }, [goNext, goPrev, onClose])
-
-  // Scroll active thumbnail into view
-  useEffect(() => {
-    const container = thumbnailRef.current
-    if (!container) return
-    const active = container.querySelector<HTMLElement>('.thumb--active')
-    if (active) {
-      active.scrollIntoView({ inline: 'center', behavior: 'smooth' })
-    }
-  }, [currentIndex])
 
   // Fullscreen
   const toggleFullscreen = () => {
@@ -105,39 +94,6 @@ export function CardViewer({ cards, currentIndex, onNavigate, onClose }: Props) 
         </button>
       </div>
 
-      {/* Thumbnail strip */}
-      {total > 1 && (
-        <div className="viewer-thumbs" ref={thumbnailRef} role="tablist" aria-label="Alle Karten">
-          {cards.map((c, i) => (
-            <button
-              key={c.id}
-              className={`thumb ${i === currentIndex ? 'thumb--active' : ''}`}
-              onClick={() => onNavigate(i)}
-              role="tab"
-              aria-selected={i === currentIndex}
-              aria-label={c.title}
-              title={c.title}
-            >
-              <img
-                src={c.image}
-                alt={c.title}
-                loading="lazy"
-                onError={e => {
-                  const el = e.currentTarget
-                  el.style.display = 'none'
-                  const parent = el.parentElement
-                  if (parent) {
-                    const fb = document.createElement('span')
-                    fb.textContent = '🌳'
-                    fb.className = 'thumb-fallback'
-                    parent.appendChild(fb)
-                  }
-                }}
-              />
-            </button>
-          ))}
-        </div>
-      )}
     </div>
   )
 }

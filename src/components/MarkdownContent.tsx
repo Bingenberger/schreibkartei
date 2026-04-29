@@ -56,9 +56,10 @@ function parse(raw: string): ParsedCard {
 
     if (section === 'impulse') {
       if (!line) continue
-      if (IMPULSE_HEADERS.has(line)) {
+      const heading = line.endsWith(':') ? line.slice(0, -1) : line
+      if (IMPULSE_HEADERS.has(heading)) {
         if (currentImpulse) result.impulses.push(currentImpulse)
-        currentImpulse = { heading: line, text: '' }
+        currentImpulse = { heading, text: '' }
       } else if (currentImpulse) {
         currentImpulse.text += (currentImpulse.text ? ' ' : '') + line
       }

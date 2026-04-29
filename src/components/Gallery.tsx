@@ -32,7 +32,7 @@ function GalleryCard({ card, index, onSelect }: GalleryCardProps) {
           </div>
         ) : (
           <img
-            src={card.image}
+            src={card.thumbnail}
             alt={card.title}
             className={`gallery-card-img ${imgLoaded ? 'gallery-card-img--loaded' : ''}`}
             loading="lazy"

@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react'
+import { useState, useCallback, useRef } from 'react'
 import type { Card } from '../types'
 import { MarkdownContent } from './MarkdownContent'
 import './FlipCard.css'
@@ -36,23 +36,25 @@ export function FlipCard({ card, onNext, onPrev }: Props) {
   )
 
   // Swipe detection
-  let touchStartX = 0
-  let touchStartY = 0
+  const touchStart = useRef({ x: 0, y: 0 })
 
   const onTouchStart = (e: React.TouchEvent) => {
-    touchStartX = e.touches[0].clientX
-    touchStartY = e.touches[0].clientY
+    touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
   }
 
   const onTouchEnd = (e: React.TouchEvent) => {
-    const dx = e.changedTouches[0].clientX - touchStartX
-    const dy = e.changedTouches[0].clientY - touchStartY
-    // Only swipe left/right if horizontal movement dominates
-    if (Math.abs(dx) > Math.abs(dy) && Math.abs(dx) > 50) {
+    const dx = e.changedTouches[0].clientX - touchStart.current.x
+    const dy = e.changedTouches[0].clientY - touchStart.current.y
+    const adx = Math.abs(dx)
+    const ady = Math.abs(dy)
+    if (adx > ady && adx > 50) {
+      // horizontal swipe → navigate
       if (dx < 0) onNext?.()
       else onPrev?.()
-    } else if (Math.abs(dx) < 10 && Math.abs(dy) < 10) {
-      // It was a tap
+    } else if (ady > 20 && ady > adx) {
+      // vertical scroll → ignore
+    } else {
+      // tap or small movement → flip
       handleFlip()
     }
   }
@@ -102,7 +104,7 @@ export function FlipCard({ card, onNext, onPrev }: Props) {
 
         {/* Back – Markdown */}
         <div className="flip-card-face flip-card-back" aria-hidden={!flipped}>
-          <div className="flip-back-scroll" onClick={e => e.stopPropagation()}>
+          <div className="flip-back-scroll">
             <MarkdownContent url={card.markdown} />
           </div>
           <div className="flip-card-hint flip-card-hint--back">

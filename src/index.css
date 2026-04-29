@@ -1,3 +1,28 @@
+/* Grundschrift */
+@font-face {
+  font-family: 'Grundschrift';
+  src: url('./fonts/Grundschrift-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Grundschrift';
+  src: url('./fonts/Grundschrift-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Grundschrift';
+  src: url('./fonts/Grundschrift-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Design System */
 :root {
   --bg: #faf7f2;
@@ -37,7 +62,7 @@ html {
 }
 
 body {
-  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  font-family: 'Grundschrift', 'Segoe UI', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.5;

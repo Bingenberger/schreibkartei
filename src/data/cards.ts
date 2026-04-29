@@ -1,0 +1,51 @@
+import type { Card } from '../types'
+
+// Neue Karten hinzufügen:
+// 1. PNG konvertieren: magick "Name.png" -quality 82 "public/webp/Name.webp"
+// 2. MD nach public/md/ kopieren
+// 3. Eintrag hier ergänzen
+
+export const cards: Card[] = [
+  { id: 'H01', title: 'Fußballplatz', image: '/webp/H01 - Fußballplatz - bearbeitet.webp', markdown: '/md/H01.md' },
+  { id: 'H02', title: 'Reitplatz', image: '/webp/H02 - Reitplatz - bearbeitet.webp', markdown: '/md/H02.md' },
+  { id: 'H03', title: 'Verließ', image: '/webp/H03 - Verließ - bearbeitet.webp', markdown: '/md/H03.md' },
+  { id: 'H04', title: 'Rosengarten', image: '/webp/H04 - Rosengarten - bearbeitet.webp', markdown: '/md/H04.md' },
+  { id: 'H05', title: 'Schulhof', image: '/webp/H05 - Schulhof - bearbeitet.webp', markdown: '/md/H05.md' },
+  { id: 'H06', title: 'Hexenküche', image: '/webp/H06 - Hexenküche - bearbeitet.webp', markdown: '/md/H06.md' },
+  { id: 'H07', title: 'Raumstation', image: '/webp/H07 - Raumstation - bearbeitet.webp', markdown: '/md/H07.md' },
+  { id: 'H08', title: 'Uhrenfabrik', image: '/webp/H08 - Uhrenfabrik - bearbeitet.webp', markdown: '/md/H08.md' },
+  { id: 'H09', title: 'Höhle Schmied', image: '/webp/H09 - Höhle Schmied - bearbeitet.webp', markdown: '/md/H09.md' },
+  { id: 'H10', title: 'Korallenriff', image: '/webp/H10 - Korallenriff - bearbeitet.webp', markdown: '/md/H10.md' },
+  { id: 'H11', title: 'Gewächshaus', image: '/webp/H11 - Gewächshaus - bearbeitet.webp', markdown: '/md/H11.md' },
+  { id: 'H12', title: 'Bonbonland', image: '/webp/H12 - Bonbonland - bearbeitet.webp', markdown: '/md/H12.md' },
+  { id: 'H13', title: 'Wolkenwerkstatt', image: '/webp/H13 - Wolkenwerkstatt - bearbeitet.webp', markdown: '/md/H13.md' },
+  { id: 'H14', title: 'Seekino', image: '/webp/H14 - Seekino - bearbeitet.webp', markdown: '/md/H14.md' },
+  { id: 'H15', title: 'Postkürbis', image: '/webp/H15 - Postkürbis - bearbeitet.webp', markdown: '/md/H15.md' },
+  { id: 'H16', title: 'Baumhaus im Urwald', image: '/webp/H16 - Baumhaus im Urwald - bearbeitet.webp', markdown: '/md/H16.md' },
+  { id: 'H17', title: 'Bauwagen am Strand', image: '/webp/H17 - Bauwagen am Strand - bearbeitet.webp', markdown: '/md/H17.md' },
+  { id: 'H18', title: 'Tropfsteinhöhle', image: '/webp/H18 - Tropfsteinhöhle - bearbeitet.webp', markdown: '/md/H18.md' },
+  { id: 'H19', title: 'Baumhaus', image: '/webp/H19 - Baumhaus - bearbeitet.webp', markdown: '/md/H19.md' },
+  { id: 'H20', title: 'Gewächshaus', image: '/webp/H20 - Gewächshaus - bearbeitet.webp', markdown: '/md/H20.md' },
+  { id: 'H21', title: 'Fliegender Jahrmarkt', image: '/webp/H21 - fliegender Jahrmarkt - bearbeitet.webp', markdown: '/md/H21.md' },
+  { id: 'H22', title: 'Süßigkeitenfabrik', image: '/webp/H22 - Süßigkeitenfabrik - bearbeitet.webp', markdown: '/md/H22.md' },
+  { id: 'H23', title: 'Laterneninseln', image: '/webp/H23 - Laterneninseln - bearbeitet.webp', markdown: '/md/H23.md' },
+  { id: 'H24', title: 'Postschiffhafen', image: '/webp/H24 - Postschiffhafen - bearbeitet.webp', markdown: '/md/H24.md' },
+  { id: 'H25', title: 'Vogelnest', image: '/webp/H25 - Vogelnest - bearbeitet.webp', markdown: '/md/H25.md' },
+  { id: 'H26', title: 'Gefrorene Musik', image: '/webp/H26 - gefrorene Musik - bearbeitet.webp', markdown: '/md/H26.md' },
+  { id: 'H27', title: 'Gewächshaus mit Seifenblasen', image: '/webp/H27 - Gewächshaus mit Seifenblasen - bearbeitet.webp', markdown: '/md/H27.md' },
+  { id: 'H28', title: 'Schattengallerie', image: '/webp/H28 - Schattengallerie - bearbeitet.webp', markdown: '/md/H28.md' },
+  { id: 'H29', title: 'Planetarium', image: '/webp/H29 - Planetarium - bearbeitet.webp', markdown: '/md/H29.md' },
+  { id: 'H30', title: 'Tortenküche', image: '/webp/H30 - Tortenküche - bearbeitet.webp', markdown: '/md/H30.md' },
+  { id: 'H31', title: 'Klassenzimmer', image: '/webp/H31 - Klassenzimmer - bearbeitet.webp', markdown: '/md/H31.md' },
+  { id: 'H32', title: 'Drachenschmiede', image: '/webp/H32 - Drachenschmiede - bearbeitet.webp', markdown: '/md/H32.md' },
+  { id: 'H33', title: 'Schneiderei', image: '/webp/H33 - Schneiderei - bearbeitet.webp', markdown: '/md/H33.md' },
+  { id: 'H34', title: 'Unterwassergeschäft', image: '/webp/H34 - Unterwassergeschäft - bearbeitet.webp', markdown: '/md/H34.md' },
+  { id: 'H35', title: 'Fliegende Schiffchen', image: '/webp/H35 - fliegende Schiffchen - bearbeitet.webp', markdown: '/md/H35.md' },
+  { id: 'H36', title: 'Lichtung', image: '/webp/H36 - Lichtung - bearbeitet.webp', markdown: '/md/H36.md' },
+  { id: 'H37', title: 'Hinterhof', image: '/webp/H37 - Hinterhof - bearbeitet.webp', markdown: '/md/H37.md' },
+  { id: 'H38', title: 'Burg', image: '/webp/H38 - Burg - bearbeitet.webp', markdown: '/md/H38.md' },
+  { id: 'H39', title: 'Bauplatz', image: '/webp/H39 - Bauplatz - bearbeitet.webp', markdown: '/md/H39.md' },
+  { id: 'H40', title: 'Taschenlampenlager', image: '/webp/H40 - Taschenlampenlager - bearbeitet.webp', markdown: '/md/H40.md' },
+  { id: 'H41', title: 'Traumgefängnis', image: '/webp/H41 - Traumgefängnis - bearbeitet.webp', markdown: '/md/H41.md' },
+  { id: 'H42', title: 'Flaschenpostamt', image: '/webp/H42 - Flaschenpostamt - bearbeitet.webp', markdown: '/md/H42.md' },
+]

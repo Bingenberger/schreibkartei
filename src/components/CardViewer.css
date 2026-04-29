@@ -1,0 +1,225 @@
+.viewer {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-viewer);
+  z-index: 100;
+  animation: viewerIn 0.25s ease;
+}
+
+@keyframes viewerIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Header */
+.viewer-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  z-index: 10;
+}
+
+.viewer-title-wrap {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  overflow: hidden;
+}
+
+.viewer-title {
+  font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+  font-weight: 700;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+.viewer-progress {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: var(--bg);
+  padding: 0.2rem 0.55rem;
+  border-radius: 100px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.viewer-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.75rem;
+  border: none;
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, transform 0.1s;
+  flex-shrink: 0;
+}
+
+.viewer-btn:hover {
+  background: var(--primary);
+  color: white;
+}
+
+.viewer-btn:active {
+  transform: scale(0.95);
+}
+
+.viewer-btn:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.viewer-btn-label {
+  display: none;
+}
+
+@media (min-width: 500px) {
+  .viewer-btn-label {
+    display: inline;
+  }
+}
+
+/* Stage */
+.viewer-stage {
+  flex: 1;
+  display: flex;
+  align-items: stretch;
+  min-height: 0;
+  padding: 0.75rem 0;
+  gap: 0;
+  overflow: hidden;
+}
+
+.viewer-card-wrap {
+  flex: 1;
+  min-width: 0;
+  padding: 0 0.25rem;
+}
+
+/* Nav buttons */
+.viewer-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  flex-shrink: 0;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 0;
+  transition: color 0.15s, background 0.15s;
+  padding: 0;
+}
+
+.viewer-nav:hover:not(:disabled) {
+  color: var(--primary);
+  background: rgba(59, 130, 246, 0.06);
+}
+
+.viewer-nav:disabled {
+  opacity: 0.2;
+  cursor: not-allowed;
+}
+
+.viewer-nav:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: -3px;
+}
+
+@media (min-width: 768px) {
+  .viewer-nav {
+    width: 64px;
+  }
+  .viewer-stage {
+    padding: 1rem 0;
+  }
+}
+
+/* Thumbnail strip */
+.viewer-thumbs {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  background: rgba(255, 255, 255, 0.9);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  scroll-behavior: smooth;
+}
+
+.viewer-thumbs::-webkit-scrollbar {
+  height: 4px;
+}
+.viewer-thumbs::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.thumb {
+  flex-shrink: 0;
+  width: 56px;
+  height: 42px;
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  border: 2px solid transparent;
+  background: var(--bg);
+  cursor: pointer;
+  padding: 0;
+  transition: border-color 0.15s, transform 0.15s, box-shadow 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumb .thumb-fallback {
+  font-size: 1.4rem;
+}
+
+.thumb--active {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  transform: scale(1.1);
+}
+
+.thumb:hover:not(.thumb--active) {
+  border-color: var(--text-muted);
+}
+
+.thumb:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+@media (min-width: 768px) {
+  .thumb {
+    width: 72px;
+    height: 54px;
+  }
+}

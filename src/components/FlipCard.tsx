@@ -35,8 +35,9 @@ export function FlipCard({ card, onNext, onPrev }: Props) {
     [handleFlip],
   )
 
-  // Swipe detection
+  // Swipe / tap detection
   const touchStart = useRef({ x: 0, y: 0 })
+  const touchHandled = useRef(false)
 
   const onTouchStart = (e: React.TouchEvent) => {
     touchStart.current = { x: e.touches[0].clientX, y: e.touches[0].clientY }
@@ -49,20 +50,27 @@ export function FlipCard({ card, onNext, onPrev }: Props) {
     const ady = Math.abs(dy)
     if (adx > ady && adx > 50) {
       // horizontal swipe → navigate
+      touchHandled.current = true
       if (dx < 0) onNext?.()
       else onPrev?.()
     } else if (ady > 20 && ady > adx) {
       // vertical scroll → ignore
     } else {
-      // tap or small movement → flip
+      // tap → flip (set flag so the synthetic onClick is ignored)
+      touchHandled.current = true
       handleFlip()
     }
   }
 
+  const handleClick = useCallback(() => {
+    if (touchHandled.current) { touchHandled.current = false; return }
+    handleFlip()
+  }, [handleFlip])
+
   return (
     <div
       className={`flip-card ${flipped ? 'flip-card--flipped' : ''}`}
-      onClick={handleFlip}
+      onClick={handleClick}
       onKeyDown={handleKeyDown}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
